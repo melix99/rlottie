@@ -55,6 +55,16 @@ LOT_EXPORT Lottie_Animation_S *lottie_animation_from_data(const char *data, cons
     }
 }
 
+LOT_EXPORT Lottie_Animation* lottie_animation_from_data_recolored(const char* data, const char* key, const char* resourcePath, const int32_t fitzpatrickType) {
+    if (auto animation = Animation::loadFromData(data, key, resourcePath, true, {}, rlottie::FitzModifier(fitzpatrickType))) {
+        Lottie_Animation_S* handle = new Lottie_Animation_S();
+        handle->mAnimation = std::move(animation);
+        return handle;
+    } else {
+        return nullptr;
+    }
+}
+
 LOT_EXPORT void lottie_animation_destroy(Lottie_Animation_S *animation)
 {
     if (animation) {
