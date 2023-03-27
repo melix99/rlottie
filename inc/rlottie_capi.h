@@ -73,6 +73,22 @@ LOT_EXPORT Lottie_Animation *lottie_animation_from_file(const char *path);
 LOT_EXPORT Lottie_Animation *lottie_animation_from_data(const char *data, const char *key, const char *resource_path);
 
 /**
+ *  @brief Constructs an animation object from JSON string data and recolors it to correct skin color.
+ *
+ *  @param[in] data The JSON string data.
+ *  @param[in] key the string that will be used to cache the JSON string data.
+ *  @param[in] resource_path the path that will be used to load external resource needed by the JSON data.
+ *  @param[in] fitzpatrick_type emoji modifier fitzpatrick type; 0-6; 0 if none
+ *
+ *  @return Animation object that can build the contents of the
+ *          Lottie resource represented by JSON string data.
+ *
+ *  @ingroup Lottie_Animation
+ *  @internal
+ */
+LOT_EXPORT Lottie_Animation *lottie_animation_from_data_recolored(const char *data, const char *key, const char *resource_path, const int32_t fitzpatrick_type);
+
+/**
  *  @brief Free given Animation object resource.
  *
  *  @param[in] animation Animation object to free.
